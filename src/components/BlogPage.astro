@@ -17,7 +17,7 @@ console.log(Astro.props);
     imgSrc={frontmatter.feature_image}
     numberOfServings={frontmatter.numberOfServings}
     steps={frontmatter.steps.map((step: { step: any; }) => step.step)}
-    tips={[]}
+    tips={frontmatter.tips?.map((tip: { tip: any; }) => tip.tip) || []}
     keyDetails={frontmatter.keyDetails}
     nutrition={frontmatter.nutrition}
   >
