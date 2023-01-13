@@ -7,7 +7,7 @@ interface Props {
   cookingTimeInMins: number;
   calories: number;
   numberOfServings: number;
-  keyDetails: {
+  keyDetails?: {
     dairyFree?: boolean;
     glutenFree?: boolean;
     eggFree?: boolean;
@@ -23,7 +23,7 @@ interface Props {
     highFiber?: boolean;
     highProtein?: boolean;
   };
-  nutrition: {
+  nutrition?: {
     calories?: number;
     fat?: number;
     saturatedFat?: number;
@@ -60,7 +60,7 @@ const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories
   </ul>
   <h3 class="text-strong">keyDetails</h3>
   <ul>
-    {Object.keys(keyDetails).map((key) => (
+    {keyDetails && Object.keys(keyDetails).map((key) => (
       <li>{key}</li>
     ))}
   </ul>
@@ -110,7 +110,7 @@ const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories
 <div class=''>
   <h3 class="font-serif text-3xl">Nutrition</h3>
   <ul>
-    {Object.entries(nutrition).map(([key, value]) => (
+    {nutrition && Object.entries(nutrition).map(([key, value]) => (
       <li>{key}: {value}</li>
     ))}
   </ul>
