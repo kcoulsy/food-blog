@@ -38,18 +38,18 @@ collections:
         fields: 
           - {label: "Dairy Free", name: "dairyFree", widget: "boolean", default: false }
           - {label: "Gluten Free", name: "glutenFree", widget: "boolean", default: false }
-          - {label: "Egg Free", name "eggFree", widget: "boolean", default: false }
-          - {label: "Milk Free", name "milkFree", widget: "boolean", default: false }
-          - {label: "Nut Free", name "nutFree", widget: "boolean", default: false }
-          - {label: "Soy Free", name "soyFree", widget: "boolean", default: false }
-          - {label: "Vegan", name "vegan", widget: "boolean", default: false }
-          - {label: "Vegetarian", name "vegetarian", widget: "boolean", default: false }
-          - {label: "Low Calorie", name "lowCalorie", widget: "boolean", default: false }
-          - {label: "Low Fat", name "lowFat", widget: "boolean", default: false }
-          - {label: "Low Carb", name "lowCarb", widget: "boolean", default: false }
-          - {label: "Keto", name "keto", widget: "boolean", default: false }
-          - {label: "High Fiber", name "highFiber", widget: "boolean", default: false }
-          - {label: "High Protein", name "highProtein", widget: "boolean", default: false }
+          - {label: "Egg Free", name: "eggFree", widget: "boolean", default: false }
+          - {label: "Milk Free", name: "milkFree", widget: "boolean", default: false }
+          - {label: "Nut Free", name: "nutFree", widget: "boolean", default: false }
+          - {label: "Soy Free", name: "soyFree", widget: "boolean", default: false }
+          - {label: "Vegan", name: "vegan", widget: "boolean", default: false }
+          - {label: "Vegetarian", name: "vegetarian", widget: "boolean", default: false }
+          - {label: "Low Calorie", name: "lowCalorie", widget: "boolean", default: false }
+          - {label: "Low Fat", name: "lowFat", widget: "boolean", default: false }
+          - {label: "Low Carb", name: "lowCarb", widget: "boolean", default: false }
+          - {label: "Keto", name: "keto", widget: "boolean", default: false }
+          - {label: "High Fiber", name: "highFiber", widget: "boolean", default: false }
+          - {label: "High Protein", name: "highProtein", widget: "boolean", default: false }
       - label: "Nutrition"
         name: "nutrition"
         widget: "object"
