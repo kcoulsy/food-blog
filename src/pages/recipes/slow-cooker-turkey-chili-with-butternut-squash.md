@@ -2,7 +2,7 @@
 layout: ../../components/BlogPage.astro
 title: Slow-Cooker Turkey Chili with Butternut Squash
 date: 2023-01-13T16:27:27.700Z
-thumbnail: /assets/image.jpg
+feature_image: /assets/image.jpg
 ingredients:
   - ingredient: lean ground turkey
     qty: 1
