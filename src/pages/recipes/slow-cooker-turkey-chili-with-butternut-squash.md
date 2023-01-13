@@ -17,6 +17,8 @@ steps:
   - step: Cover and cook on low for 6 to 8 hours, or on high for 3 to 4 hours, until
       the chili is hot and bubbly.
     thumbnail: /assets/turkey-asparagus-stirfry-scaled.webp
+tips:
+  - tip: Eat the damn thing
 cookingTimeInMins: 60
 calories: 200
 numberOfServings: 5
