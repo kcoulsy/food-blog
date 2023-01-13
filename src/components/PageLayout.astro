@@ -49,7 +49,7 @@ const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories
 
 <h1 class="font-serif text-5xl">{title}</h1>
 <div class="h-8 w-24 bg-slate-400">Reviews</div>
-<p>{hookDescription}</p>
+<p><slot /></p>
 <img src={imgSrc} alt="" srcset="">
 <!-- keyDetails, time to cook etc -->
 <div>
@@ -60,7 +60,7 @@ const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories
   </ul>
   <h3 class="text-strong">keyDetails</h3>
   <ul>
-    {keyDetails && Object.keys(keyDetails).map((key) => (
+    {keyDetails && Object.entries(keyDetails).filter(([_, value]) => value).map(([key]) => (
       <li>{key}</li>
     ))}
   </ul>
@@ -110,7 +110,7 @@ const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories
 <div class=''>
   <h3 class="font-serif text-3xl">Nutrition</h3>
   <ul>
-    {nutrition && Object.entries(nutrition).map(([key, value]) => (
+    {nutrition && Object.entries(nutrition).filter(([_, value]) => value).map(([key, value]) => (
       <li>{key}: {value}</li>
     ))}
   </ul>

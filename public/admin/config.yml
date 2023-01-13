@@ -3,7 +3,7 @@ backend:
   branch: main # Branch to update (optional; defaults to master)
 
 publish_mode: editorial_workflow
-media_folder: "src/assets"
+media_folder: "public/assets"
 public_folder: "/assets"
 
 collections:
@@ -16,7 +16,7 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "../../components/BlogPage.astro"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Featured Image", name: "feature_image", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
       - label: "Ingredients"
         name: "ingredients"
@@ -30,7 +30,14 @@ collections:
         widget: "list"
         fields:
         - {label: Step, name: step, widget: string, default: "Enter instructions here"}
-        - {label: "Optional Setp Image", name: "thumbnail", widget: "image"}
+        - {label: "Optional Setp Image", name: "thumbnail", widget: "image", required: false }
+      - label: "Tips"
+        name: "tips"
+        required: false
+        widget: "list"
+        fields:
+        - {label: Tip, name: tip, widget: string, default: "Enter tip here"}
+        - {label: "Optional Setp Image", name: "thumbnail", widget: "image", required: false }
       - {label: "Cooking Time (in minutes)", name: "cookingTimeInMins", widget: "number"}
       - {label: "Calories", name: "calories", widget: "number"}
       - {label: "Number of Servings", name: "numberOfServings", widget: "number"}

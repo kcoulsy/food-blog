@@ -1,9 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageLayout from "./PageLayout.astro";
+const { frontmatter } = Astro.props;
 
 console.log(Astro.props);
 ---
 
 <Layout title="hello">
   <h1>Home</h1>
+  <PageLayout 
+    title={frontmatter.title}
+    hookDescription="asd"
+    calories={frontmatter.calories}
+    ingredients={frontmatter.ingredients.map((ingredient: { ingredient: any; }) => ingredient.ingredient)}
+    cookingTimeInMins={frontmatter.cookingTimeInMins}
+    imgSrc={frontmatter.feature_image}
+    numberOfServings={frontmatter.numberOfServings}
+    steps={frontmatter.steps.map((step: { step: any; }) => step.step)}
+    tips={[]}
+    keyDetails={frontmatter.keyDetails}
+    nutrition={frontmatter.nutrition}
+  >
+    <slot />
+  </PageLayout> 
 </Layout>
