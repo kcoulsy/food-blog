@@ -1,0 +1,55 @@
+---
+import PageLayout from '../components/PageLayout.astro';
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<PageLayout
+			title='Slow-Cooker Turkey Chili with Butternut Squash'
+			hookDescription='This slow-cooker turkey and butternut squash chili is the perfect balance of sweet and spicy. The sweetness of the butternut squash tames the kick from cayenne, making this easy crock-pot chili just right for kids and adults alike. For those who prefer a spicier chili, just pass hot sauce at the table.'
+			imgSrc="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2019%2F08%2F24%2F6967825.jpg"
+			ingredients={[
+				'1 pound lean ground turkey',
+				'1 (28 ounce) can no-salt-added crushed tomatoes',
+				'1 (15 ounce) can no-salt-added kidney beans, rinsed and drained',
+				'1 (15 ounce) can no-salt-added black beans, rinsed and drained',
+				'1 (15 ounce) can no-salt-added pinto beans, rinsed and drained',
+				'1 (15 ounce) can no-salt-added white beans, rinsed and drained',
+				'1 (15 ounce) can no-salt-added corn, rinsed and drained',
+				'1 (15 ounce) can no-salt-added diced tomatoes',
+				'1 (15 ounce) can no-salt-added tomato sauce',
+				'1 (15 ounce) can no-salt-added tomato paste',
+				'1 (15 ounce) can no-salt-added diced green chiles',
+				'1 (15 ounce) can no-salt-added diced jalapenos',
+				'1 (15 ounce) can no-salt-added diced green chiles',
+				]}
+			steps={[
+				'In a large skillet over medium-high heat, cook the ground turkey until browned, about 5 minutes. Drain the fat and set aside.',
+				'In a large slow cooker, combine the cooked turkey, crushed tomatoes, kidney beans, black beans, pinto beans, white beans, corn, diced tomatoes, tomato sauce, tomato paste, diced green chiles, diced jalapenos, diced green chiles, and diced onions. Stir to combine.',
+				'Cover and cook on low for 6 to 8 hours, or on high for 3 to 4 hours, until the chili is hot and bubbly.',
+				'Serve with your favorite toppings, such as shredded cheese, sour cream, and sliced green onions.'
+			]}
+			tips={[
+				'To make ahead: Cover and refrigerate for up to 3 days or freeze for up to 3 months. To reheat, thaw overnight in the refrigerator and then reheat in a saucepan over medium heat, stirring occasionally, until hot.',
+				'Equipment: 5- to 6-quart slow cooker'
+
+			]}
+			calories={200}
+			cookingTimeInMins={30}
+			numberOfServings={4}
+			keyDetails={{
+				dairyFree: true,
+				eggFree:true,
+				milkFree: true
+			}}
+			nutrition={{
+				protein: 20,
+				carbohydrates: 20,
+				fat: 20,
+			}}
+		/>
+	</main>
+</Layout>
+

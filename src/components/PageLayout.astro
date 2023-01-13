@@ -1,0 +1,117 @@
+---
+interface Props {
+  title: string;
+  hookDescription: string;
+  imgSrc: string;
+  ingredients: string[];
+  cookingTimeInMins: number;
+  calories: number;
+  numberOfServings: number;
+  keyDetails: {
+    dairyFree?: boolean;
+    glutenFree?: boolean;
+    eggFree?: boolean;
+    milkFree?: boolean;
+    nutFree?: boolean;
+    soyFree?: boolean;
+    vegan?: boolean;
+    vegetarian?: boolean;
+    lowCalorie?: boolean;
+    lowFat?: boolean;
+    lowCarb?: boolean;
+    keto?: boolean;
+    highFiber?: boolean;
+    highProtein?: boolean;
+  };
+  nutrition: {
+    calories?: number;
+    fat?: number;
+    saturatedFat?: number;
+    transFat?: number;
+    cholesterol?: number;
+    sodium?: number;
+    potassium?: number;
+    carbohydrates?: number;
+    fiber?: number;
+    sugar?: number;
+    protein?: number;
+    vitaminA?: number;
+    vitaminC?: number;
+    calcium?: number;
+    iron?: number;
+  }
+  steps: string[];
+  tips: string[];
+}
+
+const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories, numberOfServings, keyDetails, steps, tips, nutrition } = Astro.props;
+---
+
+<h1 class="font-serif text-5xl">{title}</h1>
+<div class="h-8 w-24 bg-slate-400">Reviews</div>
+<p>{hookDescription}</p>
+<img src={imgSrc} alt="" srcset="">
+<!-- keyDetails, time to cook etc -->
+<div>
+  <ul>
+    <li>Calories: {calories}</li>
+    <li>Time to cook: {cookingTimeInMins} mins</li>
+    <li>Serves: {numberOfServings}</li>
+  </ul>
+  <h3 class="text-strong">keyDetails</h3>
+  <ul>
+    {Object.keys(keyDetails).map((key) => (
+      <li>{key}</li>
+    ))}
+  </ul>
+</div>
+
+<hr class="my-8 border-gray-500"/>
+
+<!-- Ingredients list -->
+<div class=''>
+  <h3 class="font-serif text-3xl">Ingredients</h3>
+  <ul>
+    {ingredients.map((ingredient, index) => (
+      <li class="py-2"><input type='checkbox' class="mr-2" id={`ingredient-${index}`}/><label for={`ingredient-${index}`}>{ingredient}</label></li>
+    ))}
+  </ul>
+</div>
+
+<hr class="my-8 border-gray-500"/>
+
+<!-- Steps -->
+<div class=''>
+  <h3 class="font-serif text-3xl">Steps</h3>
+  <ol class="list-decimal ml-4">
+    {steps.map((step, index) => (
+      <li class="py-2">{step}</li>
+    ))}
+  </ol>
+</div>
+
+<hr class="my-8 border-gray-500"/>
+
+<!-- Tips -->
+
+<div class=''>
+  <h3 class="font-serif text-3xl">Tips</h3>
+  <ul>
+    {tips.map((tip, index) => (
+      <li class="py-2">{tip}</li>
+    ))}
+  </ul>
+</div>
+
+
+<hr class="my-8 border-gray-500"/>
+
+<!-- Nutrition -->
+<div class=''>
+  <h3 class="font-serif text-3xl">Nutrition</h3>
+  <ul>
+    {Object.entries(nutrition).map(([key, value]) => (
+      <li>{key}: {value}</li>
+    ))}
+  </ul>
+</div>
