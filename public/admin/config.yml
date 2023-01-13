@@ -9,19 +9,28 @@ public_folder: "/assets"
 collections:
   - name: "recipe" # Used in routes, e.g., /admin/collections/blog
     label: "Recipe" # Used in the UI
-    folder: "_recipes" # The path to the folder where the documents are stored
+    folder: "src/pages/recipes" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "../../components/BlogPage.astro"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Ingredients"
+        name: "ingredients"
+        widget: "list"
+        fields:
+        - {label: Ingredient, name: ingredient, widget: string, default: "Enter instructions here"}
       - label: "Steps"
         name: "steps"
         widget: "list"
-        default: ["Type step 1 here", "Type step 2 here"]
+        fields:
+        - {label: Step, name: step, widget: string, default: "Enter instructions here"}
+      - {label: "Cooking Time (in minutes)", name: "cookingTimeInMins", widget: "number"}
+      - {label: "Calories", name: "calories", widget: "number"}
+      - {label: "Number of Servings", name: "numberOfServings", widget: "number"}
       - label: "keyDetails"
         name: "keyDetails"
         widget: "object"
@@ -29,3 +38,35 @@ collections:
         fields: 
           - {label: "Dairy Free", name: "dairyFree", widget: "boolean", default: false }
           - {label: "Gluten Free", name: "glutenFree", widget: "boolean", default: false }
+          - {label: "Egg Free", name "eggFree", widget: "boolean", default: false }
+          - {label: "Milk Free", name "milkFree", widget: "boolean", default: false }
+          - {label: "Nut Free", name "nutFree", widget: "boolean", default: false }
+          - {label: "Soy Free", name "soyFree", widget: "boolean", default: false }
+          - {label: "Vegan", name "vegan", widget: "boolean", default: false }
+          - {label: "Vegetarian", name "vegetarian", widget: "boolean", default: false }
+          - {label: "Low Calorie", name "lowCalorie", widget: "boolean", default: false }
+          - {label: "Low Fat", name "lowFat", widget: "boolean", default: false }
+          - {label: "Low Carb", name "lowCarb", widget: "boolean", default: false }
+          - {label: "Keto", name "keto", widget: "boolean", default: false }
+          - {label: "High Fiber", name "highFiber", widget: "boolean", default: false }
+          - {label: "High Protein", name "highProtein", widget: "boolean", default: false }
+      - label: "Nutrition"
+        name: "nutrition"
+        widget: "object"
+        collapsed: true
+        fields: 
+          - {label: "calories", name: "calories", widget: "boolean", default: false}
+          - {label: "fat", name: "fat", widget: "boolean", default: false}
+          - {label: "saturatedFat", name: "saturatedFat", widget: "boolean", default: false}
+          - {label: "transFat", name: "transFat", widget: "boolean", default: false}
+          - {label: "cholesterol", name: "cholesterol", widget: "boolean", default: false}
+          - {label: "sodium", name: "sodium", widget: "boolean", default: false}
+          - {label: "potassium", name: "potassium", widget: "boolean", default: false}
+          - {label: "carbohydrates", name: "carbohydrates", widget: "boolean", default: false}
+          - {label: "fiber", name: "fiber", widget: "boolean", default: false}
+          - {label: "sugar", name: "sugar", widget: "boolean", default: false}
+          - {label: "protein", name: "protein", widget: "boolean", default: false}
+          - {label: "vitaminA", name: "vitaminA", widget: "boolean", default: false}
+          - {label: "vitaminC", name: "vitaminC", widget: "boolean", default: false}
+          - {label: "calcium", name: "calcium", widget: "boolean", default: false}
+          - {label: "iron", name: "iron", widget: "boolean", default: false}
