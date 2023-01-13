@@ -22,12 +22,15 @@ collections:
         name: "ingredients"
         widget: "list"
         fields:
-        - {label: Ingredient, name: ingredient, widget: string, default: "Enter instructions here"}
+        - {label: Ingredient, name: ingredient, widget: string, default: "Enter ingredient here such as egg"}
+        - {label: Quantity, name: qty, widget: number, default: 1}
+        - {label: Amount , name: amount, widget: string, default: "Such as 10ml or 50g etc"}
       - label: "Steps"
         name: "steps"
         widget: "list"
         fields:
         - {label: Step, name: step, widget: string, default: "Enter instructions here"}
+        - {label: "Optional Setp Image", name: "thumbnail", widget: "image"}
       - {label: "Cooking Time (in minutes)", name: "cookingTimeInMins", widget: "number"}
       - {label: "Calories", name: "calories", widget: "number"}
       - {label: "Number of Servings", name: "numberOfServings", widget: "number"}
