@@ -1,4 +1,7 @@
 ---
+import RecipeKeyDetails from './RecipeKeyDetails.astro';
+import RelatedRecipes from './RelatedRecipes.astro';
+
 interface Props {
   title: string;
   hookDescription: string;
@@ -44,26 +47,19 @@ interface Props {
   tips: string[];
 }
 
-const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories, numberOfServings, keyDetails, steps, tips, nutrition } = Astro.props;
+const { title, imgSrc, ingredients, cookingTimeInMins, calories, numberOfServings, keyDetails, steps, tips, nutrition } = Astro.props;
 ---
 
 <h1 class="font-serif text-5xl">{title}</h1>
 <div class="h-8 w-24 bg-slate-400">Reviews</div>
 <p><slot /></p>
-<img src={imgSrc} alt="" srcset="">
 <!-- keyDetails, time to cook etc -->
-<div>
-  <ul>
-    <li>Calories: {calories}</li>
-    <li>Time to cook: {cookingTimeInMins} mins</li>
-    <li>Serves: {numberOfServings}</li>
-  </ul>
-  <h3 class="text-strong">keyDetails</h3>
-  <ul>
-    {keyDetails && Object.entries(keyDetails).filter(([_, value]) => value).map(([key]) => (
-      <li>{key}</li>
-    ))}
-  </ul>
+<div class="w-full flex gap-2 justify-between flex-col xl:flex-row">
+  <div class="w-full xl:w-4/6">
+    <img src={imgSrc} alt={`${title} feature image`} class="w-full" />
+  </div>
+  
+  <RecipeKeyDetails {...keyDetails} cookingTimeInMins={cookingTimeInMins} calories={calories} numberOfServings={numberOfServings}/>
 </div>
 
 <hr class="my-8 border-gray-500"/>
@@ -110,8 +106,15 @@ const { title, hookDescription, imgSrc, ingredients, cookingTimeInMins, calories
 <div class=''>
   <h3 class="font-serif text-3xl">Nutrition</h3>
   <ul>
-    {nutrition && Object.entries(nutrition).filter(([_, value]) => value).map(([key, value]) => (
+    {nutrition && Object.entries(nutrition).filter(([_, value]) => value && value > 0).map(([key, value]) => (
       <li>{key}: {value}</li>
     ))}
   </ul>
 </div>
+
+<hr class="my-8 border-gray-500"/>
+
+<RelatedRecipes />
+
+
+<hr class="my-8"/>

@@ -1,0 +1,42 @@
+---
+import type { Recipe } from '../types/Recipe';
+import RecipeReadMore from './RecipeReadMore.astro';
+
+interface Props {
+  slugs?: string[];
+}
+const { slugs } = Astro.props;
+const recipes = await Astro.glob('../pages/recipes/*.md');
+
+const MAX_SHOW = 4;
+
+let relatedRecipes = [];
+if (slugs && slugs.length) {
+  relatedRecipes = recipes.filter((recipe) => slugs.includes(recipe.slug));
+}
+
+if (relatedRecipes.length < MAX_SHOW) {
+  const remaining = MAX_SHOW - relatedRecipes.length;
+  const randomRecipes = recipes
+    .filter((recipe) => !relatedRecipes.includes(recipe))
+    .sort(() => Math.random() - 0.5) // maybe sort by latest
+    .slice(0, remaining);
+
+  relatedRecipes = [...relatedRecipes, ...randomRecipes];
+}
+
+console.log(relatedRecipes[0])
+---
+<section>
+  <h3 class="font-serif text-3xl my-4">Related Recipes</h3>
+  <div class="flex gap-2">
+    {relatedRecipes.map((recipe) => (
+      <RecipeReadMore
+        url={recipe.url}
+        title={recipe.frontmatter.title}
+        description={recipe.content}
+        image={recipe.frontmatter.feature_image}
+      />
+    ))}
+  </div>
+</section>

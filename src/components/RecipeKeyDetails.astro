@@ -1,0 +1,50 @@
+---
+interface Props {
+  cookingTimeInMins: number;
+  calories: number;
+  numberOfServings: number;
+  keyDetails?: {
+    dairyFree?: boolean;
+    glutenFree?: boolean;
+    eggFree?: boolean;
+    milkFree?: boolean;
+    nutFree?: boolean;
+    soyFree?: boolean;
+    vegan?: boolean;
+    vegetarian?: boolean;
+    lowCalorie?: boolean;
+    lowFat?: boolean;
+    lowCarb?: boolean;
+    keto?: boolean;
+    highFiber?: boolean;
+    highProtein?: boolean;
+  };
+}
+
+const { calories, cookingTimeInMins, numberOfServings, keyDetails } = Astro.props;
+---
+
+<section class="bg-orange-50 p-8 flex-1">
+  <table class="w-full text-lg font-semibold border-separate border-spacing-y-4">
+    <tbody>
+      <tr>
+        <td>Calories</td>
+        <td>{calories}</td>
+      </tr>
+      <tr>
+        <td>Time to cook</td>
+        <td>{cookingTimeInMins} mins</td>
+      </tr>
+      <tr>
+        <td>Serves</td>
+        <td>{numberOfServings}</td>
+      </tr>
+      {keyDetails && Object.entries(keyDetails).filter(([_, value]) => value).map(([key]) => (
+        <tr>
+          <td>{key}</td>
+          <td>Yes</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</section>

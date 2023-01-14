@@ -1,6 +1,6 @@
 ---
 layout: ../../components/BlogPage.astro
-title: Sahara Sunset
+title: Sahara Sunset 2
 date: 2023-01-13T16:52:52.761Z
 feature_image: /assets/homemade-grilled-cheese-sandwich-with-tomatoes-500x500.png
 ingredients:

@@ -38,20 +38,20 @@ keyDetails:
   vegetarian: false
   dairyFree: true
 nutrition:
-  carbohydrates: false
-  protein: false
+  carbohydrates: 0
+  protein: 0
   saturatedFat: true
   calories: true
-  iron: false
-  fiber: false
-  calcium: false
-  cholesterol: false
-  vitaminA: false
-  vitaminC: false
-  transFat: false
-  potassium: false
-  sugar: false
-  sodium: false
-  fat: true
+  iron: 0
+  fiber: 0
+  calcium: 0
+  cholesterol: 0
+  vitaminA: 0
+  vitaminC: 0
+  transFat: 0
+  potassium: 0
+  sugar: 0
+  sodium: 0
+  fat: 10
 ---
 This slow-cooker turkey and butternut squash chili is the perfect balance of sweet and spicy. The sweetness of the butternut squash tames the kick from cayenne, making this easy crock-pot chili just right for kids and adults alike. For those who prefer a spicier chili, just pass hot sauce at the table.

@@ -65,18 +65,24 @@ collections:
         widget: "object"
         collapsed: true
         fields: 
-          - {label: "calories", name: "calories", widget: "boolean", default: false}
-          - {label: "fat", name: "fat", widget: "boolean", default: false}
-          - {label: "saturatedFat", name: "saturatedFat", widget: "boolean", default: false}
-          - {label: "transFat", name: "transFat", widget: "boolean", default: false}
-          - {label: "cholesterol", name: "cholesterol", widget: "boolean", default: false}
-          - {label: "sodium", name: "sodium", widget: "boolean", default: false}
-          - {label: "potassium", name: "potassium", widget: "boolean", default: false}
-          - {label: "carbohydrates", name: "carbohydrates", widget: "boolean", default: false}
-          - {label: "fiber", name: "fiber", widget: "boolean", default: false}
-          - {label: "sugar", name: "sugar", widget: "boolean", default: false}
-          - {label: "protein", name: "protein", widget: "boolean", default: false}
-          - {label: "vitaminA", name: "vitaminA", widget: "boolean", default: false}
-          - {label: "vitaminC", name: "vitaminC", widget: "boolean", default: false}
-          - {label: "calcium", name: "calcium", widget: "boolean", default: false}
-          - {label: "iron", name: "iron", widget: "boolean", default: false}
+          - {label: "calories", name: "calories", widget: "number", default: 0 }
+          - {label: "fat", name: "fat", widget: "number", default: 0 }
+          - {label: "saturatedFat", name: "saturatedFat", widget: "number", default: 0 }
+          - {label: "transFat", name: "transFat", widget: "number", default: 0 }
+          - {label: "cholesterol", name: "cholesterol", widget: "number", default: 0 }
+          - {label: "sodium", name: "sodium", widget: "number", default: 0 }
+          - {label: "potassium", name: "potassium", widget: "number", default: 0 }
+          - {label: "carbohydrates", name: "carbohydrates", widget: "number", default: 0 }
+          - {label: "fiber", name: "fiber", widget: "number", default: 0 }
+          - {label: "sugar", name: "sugar", widget: "number", default: 0 }
+          - {label: "protein", name: "protein", widget: "number", default: 0 }
+          - {label: "vitaminA", name: "vitaminA", widget: "number", default: 0 }
+          - {label: "vitaminC", name: "vitaminC", widget: "number", default: 0 }
+          - {label: "calcium", name: "calcium", widget: "number", default: 0 }
+          - {label: "iron", name: "iron", widget: "number", default: 0 }
+      - label: "Related Slugs"
+        name: "related_slugs"
+        required: false
+        widget: "list"
+        fields:
+        - {label: Slug, name: slug, widget: string, default: "example: \"sahara-sunset\""}
