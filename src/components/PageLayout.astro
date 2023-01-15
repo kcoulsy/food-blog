@@ -42,79 +42,109 @@ interface Props {
     vitaminC?: number;
     calcium?: number;
     iron?: number;
-  }
+  };
   steps: string[];
   tips: string[];
 }
 
-const { title, imgSrc, ingredients, cookingTimeInMins, calories, numberOfServings, keyDetails, steps, tips, nutrition } = Astro.props;
+const {
+  title,
+  imgSrc,
+  ingredients,
+  cookingTimeInMins,
+  calories,
+  numberOfServings,
+  keyDetails,
+  steps,
+  tips,
+  nutrition,
+} = Astro.props;
 ---
 
-<h1 class="font-serif text-5xl">{title}</h1>
-<div class="h-8 w-24 bg-slate-400">Reviews</div>
-<p><slot /></p>
+<hr class="mb-8 border-gray-500" />
+<h1 class="font-serif text-5xl pb-4">{title}</h1>
+<!-- <div class="h-8 w-24 bg-slate-400">Reviews</div> -->
+
+<slot />
+
 <!-- keyDetails, time to cook etc -->
-<div class="w-full flex gap-2 justify-between flex-col xl:flex-row">
+<div class="w-full pt-4 flex gap-2 justify-between flex-col xl:flex-row">
   <div class="w-full xl:w-4/6">
     <img src={imgSrc} alt={`${title} feature image`} class="w-full" />
   </div>
-  
-  <RecipeKeyDetails {...keyDetails} cookingTimeInMins={cookingTimeInMins} calories={calories} numberOfServings={numberOfServings}/>
+
+  <RecipeKeyDetails
+    {...keyDetails}
+    cookingTimeInMins={cookingTimeInMins}
+    calories={calories}
+    numberOfServings={numberOfServings}
+  />
 </div>
 
-<hr class="my-8 border-gray-500"/>
+<hr class="my-8 border-gray-500" />
 
 <!-- Ingredients list -->
-<div class=''>
+<div class="">
   <h3 class="font-serif text-3xl">Ingredients</h3>
   <ul>
-    {ingredients.map((ingredient, index) => (
-      <li class="py-2"><input type='checkbox' class="mr-2" id={`ingredient-${index}`}/><label for={`ingredient-${index}`}>{ingredient}</label></li>
-    ))}
+    {
+      ingredients.map((ingredient, index) => (
+        <li class="py-2">
+          <>
+            <input type="checkbox" class="mr-2" id={`ingredient-${index}`} />
+            <label for={`ingredient-${index}`}>{ingredient}</label>
+          </>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
-<hr class="my-8 border-gray-500"/>
+<hr class="my-8 border-gray-500" />
 
 <!-- Steps -->
-<div class=''>
+<div class="">
   <h3 class="font-serif text-3xl">Steps</h3>
   <ol class="list-decimal ml-4">
-    {steps.map((step, index) => (
-      <li class="py-2">{step}</li>
-    ))}
+    {steps.map((step, index) => <li class="py-2">{step}</li>)}
   </ol>
 </div>
 
-<hr class="my-8 border-gray-500"/>
+<hr class="my-8 border-gray-500" />
 
 <!-- Tips -->
 
-<div class=''>
+<div class="">
   <h3 class="font-serif text-3xl">Tips</h3>
   <ul>
-    {tips.map((tip, index) => (
-      <li class="py-2">{tip}</li>
-    ))}
+    {tips.map((tip, index) => <li class="py-2">{tip}</li>)}
   </ul>
 </div>
-
-
-<hr class="my-8 border-gray-500"/>
 
 <!-- Nutrition -->
-<div class=''>
-  <h3 class="font-serif text-3xl">Nutrition</h3>
-  <ul>
-    {nutrition && Object.entries(nutrition).filter(([_, value]) => value && value > 0).map(([key, value]) => (
-      <li>{key}: {value}</li>
-    ))}
-  </ul>
-</div>
+{
+  nutrition && Object.entries(nutrition).filter(([_, value]) => value && value > 0).length > 0 && (
+    <>
+      <hr class="my-8 border-gray-500" />
+      <div class="">
+        <h3 class="font-serif text-3xl">Nutrition</h3>
+        <ul>
+          {nutrition &&
+            Object.entries(nutrition)
+              .filter(([_, value]) => value && value > 0)
+              .map(([key, value]) => (
+                <li>
+                  {key}: {value}
+                </li>
+              ))}
+        </ul>
+      </div>
+    </>
+  )
+}
 
-<hr class="my-8 border-gray-500"/>
+<hr class="my-8 border-gray-500" />
 
 <RelatedRecipes />
 
-
-<hr class="my-8"/>
+<hr class="my-8" />

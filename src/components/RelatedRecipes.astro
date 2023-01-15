@@ -1,42 +1,47 @@
 ---
-import type { Recipe } from '../types/Recipe';
+import type { RecipeSchema } from '../types/Recipe';
 import RecipeReadMore from './RecipeReadMore.astro';
 
 interface Props {
   slugs?: string[];
 }
 const { slugs } = Astro.props;
-const recipes = await Astro.glob('../pages/recipes/*.md');
+const recipes = await Astro.glob<RecipeSchema>('../pages/recipes/*.md');
 
 const MAX_SHOW = 4;
 
-let relatedRecipes = [];
+let relatedRecipes: RecipeSchema[] = [];
 if (slugs && slugs.length) {
-  relatedRecipes = recipes.filter((recipe) => slugs.includes(recipe.slug));
+  relatedRecipes = recipes
+    .filter((recipe) => slugs.includes(recipe.url?.replace('/recipes/', '') || ''))
+    .map((recipe) => ({ ...recipe.frontmatter, url: recipe.url }));
 }
 
 if (relatedRecipes.length < MAX_SHOW) {
   const remaining = MAX_SHOW - relatedRecipes.length;
   const randomRecipes = recipes
-    .filter((recipe) => !relatedRecipes.includes(recipe))
+    .filter((recipe) => !relatedRecipes.find((r) => r?.title === recipe.frontmatter?.title))
     .sort(() => Math.random() - 0.5) // maybe sort by latest
-    .slice(0, remaining);
+    .slice(0, remaining)
+    .map((recipe) => ({ ...recipe.frontmatter, url: recipe.url }));
 
   relatedRecipes = [...relatedRecipes, ...randomRecipes];
 }
 
-console.log(relatedRecipes[0])
 ---
+
 <section>
   <h3 class="font-serif text-3xl my-4">Related Recipes</h3>
   <div class="flex gap-2">
-    {relatedRecipes.map((recipe) => (
-      <RecipeReadMore
-        url={recipe.url}
-        title={recipe.frontmatter.title}
-        description={recipe.content}
-        image={recipe.frontmatter.feature_image}
-      />
-    ))}
+    {
+      relatedRecipes.map((recipe) => (
+        <RecipeReadMore
+          url={recipe.url}
+          title={recipe.title}
+          description={recipe.hookDescription}
+          image={recipe.feature_image}
+        />
+      ))
+    }
   </div>
 </section>

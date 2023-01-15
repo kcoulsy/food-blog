@@ -3,36 +3,35 @@ import PageLayout from '../components/PageLayout.astro';
 import Layout from '../layouts/Layout.astro';
 import fs from 'node:fs/promises';
 const posts = await Astro.glob('../pages/recipes/*.md');
-console.log(posts[0].frontmatter);
-
-
+// console.log(posts[0].frontmatter);
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		{posts.map((post) => (
-			<article>
-				<h2>{post.frontmatter.title}</h2>
-				<p>{post.frontmatter.description}</p>
-				<a href={post.url}>Read more</a>
-			</article>
-		))}
-	</main>
-	<script>
-		declare global {
-			interface Window {
-				netlifyIdentity: any;
-			}
-		}
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", (user: any) => {
-				if (!user) {
-					window.netlifyIdentity.on("login", () => {
-						document.location.href = "/admin/";
-					});
-				}
-			});
-		}
-	</script>
+  <main>
+    {
+      posts.map((post) => (
+        <article>
+          <h2>{post.frontmatter.title}</h2>
+          <p>{post.frontmatter.description}</p>
+          <a href={post.url}>Read more</a>
+        </article>
+      ))
+    }
+  </main>
+  <script>
+    declare global {
+      interface Window {
+        netlifyIdentity: any;
+      }
+    }
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', (user: any) => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
 </Layout>
-
