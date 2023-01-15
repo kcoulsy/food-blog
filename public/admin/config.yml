@@ -3,86 +3,92 @@ backend:
   branch: main # Branch to update (optional; defaults to master)
 
 publish_mode: editorial_workflow
-media_folder: "public/assets"
-public_folder: "/assets"
+media_folder: 'public/assets'
+public_folder: '/assets'
 
 collections:
-  - name: "recipe" # Used in routes, e.g., /admin/collections/blog
-    label: "Recipe" # Used in the UI
-    folder: "src/pages/recipes" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "../../components/BlogPage.astro"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "feature_image", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - label: "Ingredients"
-        name: "ingredients"
-        widget: "list"
+  - name: 'recipe'
+    label: 'Recipe'
+    folder: 'src/pages/recipes'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: '../../components/BlogPage.astro' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Featured Image', name: 'feature_image', widget: 'image' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Ingredients'
+        name: 'ingredients'
+        widget: 'list'
         fields:
-        - {label: Ingredient, name: ingredient, widget: string, default: "Enter ingredient here such as egg"}
-        - {label: Quantity, name: qty, widget: number, default: 1}
-        - {label: Amount , name: amount, widget: string, default: "Such as 10ml or 50g etc"}
-      - label: "Steps"
-        name: "steps"
-        widget: "list"
+          - { label: 'Section Name', name: ingredient, widget: string, default: 'If only 1 section this wont be shown' }
+          - label: 'Section Ingredients'
+            name: 'section_ingredients'
+            widget: 'list'
+            fields:
+              - { label: Ingredient, name: ingredient, widget: string, default: 'Enter ingredient here such as egg' }
+              - { label: Quantity, name: qty, widget: number, default: 1 }
+              - { label: Unit, name: unit, widget: string, default: 'Such as 10ml or 50g etc' }
+      - label: 'Steps'
+        name: 'steps'
+        widget: 'list'
         fields:
-        - {label: Step, name: step, widget: string, default: "Enter instructions here"}
-        - {label: "Optional Setp Image", name: "thumbnail", widget: "image", required: false }
-      - label: "Tips"
-        name: "tips"
+          - { label: Step, name: step, widget: string, default: 'Enter instructions here' }
+          - { label: 'Step Image (optional)', name: 'thumbnail', widget: 'image', required: false }
+          - { label: 'Tip for Step (optional)', name: tip, widget: string, default: 'Enter tip here', required: false }
+      - label: 'Tips'
+        name: 'tips'
         required: false
-        widget: "list"
+        widget: 'list'
         fields:
-        - {label: Tip, name: tip, widget: string, default: "Enter tip here"}
-        - {label: "Optional Setp Image", name: "thumbnail", widget: "image", required: false }
-      - {label: "Cooking Time (in minutes)", name: "cookingTimeInMins", widget: "number"}
-      - {label: "Calories", name: "calories", widget: "number"}
-      - {label: "Number of Servings", name: "numberOfServings", widget: "number"}
-      - label: "keyDetails"
-        name: "keyDetails"
-        widget: "object"
+          - { label: Tip, name: tip, widget: string, default: 'Enter tip here' }
+          - { label: 'Optional Setp Image', name: 'thumbnail', widget: 'image', required: false }
+      - { label: 'Cooking Time (in minutes)', name: 'cookingTimeInMins', widget: 'number' }
+      - { label: 'Calories', name: 'calories', widget: 'number' }
+      - { label: 'Number of Servings', name: 'numberOfServings', widget: 'number' }
+      - label: 'keyDetails'
+        name: 'keyDetails'
+        widget: 'object'
         collapsed: true
-        fields: 
-          - {label: "Dairy Free", name: "dairyFree", widget: "boolean", default: false }
-          - {label: "Gluten Free", name: "glutenFree", widget: "boolean", default: false }
-          - {label: "Egg Free", name: "eggFree", widget: "boolean", default: false }
-          - {label: "Milk Free", name: "milkFree", widget: "boolean", default: false }
-          - {label: "Nut Free", name: "nutFree", widget: "boolean", default: false }
-          - {label: "Soy Free", name: "soyFree", widget: "boolean", default: false }
-          - {label: "Vegan", name: "vegan", widget: "boolean", default: false }
-          - {label: "Vegetarian", name: "vegetarian", widget: "boolean", default: false }
-          - {label: "Low Calorie", name: "lowCalorie", widget: "boolean", default: false }
-          - {label: "Low Fat", name: "lowFat", widget: "boolean", default: false }
-          - {label: "Low Carb", name: "lowCarb", widget: "boolean", default: false }
-          - {label: "Keto", name: "keto", widget: "boolean", default: false }
-          - {label: "High Fiber", name: "highFiber", widget: "boolean", default: false }
-          - {label: "High Protein", name: "highProtein", widget: "boolean", default: false }
-      - label: "Nutrition"
-        name: "nutrition"
-        widget: "object"
+        fields:
+          - { label: 'Dairy Free', name: 'dairyFree', widget: 'boolean', default: false }
+          - { label: 'Gluten Free', name: 'glutenFree', widget: 'boolean', default: false }
+          - { label: 'Egg Free', name: 'eggFree', widget: 'boolean', default: false }
+          - { label: 'Milk Free', name: 'milkFree', widget: 'boolean', default: false }
+          - { label: 'Nut Free', name: 'nutFree', widget: 'boolean', default: false }
+          - { label: 'Soy Free', name: 'soyFree', widget: 'boolean', default: false }
+          - { label: 'Vegan', name: 'vegan', widget: 'boolean', default: false }
+          - { label: 'Vegetarian', name: 'vegetarian', widget: 'boolean', default: false }
+          - { label: 'Low Calorie', name: 'lowCalorie', widget: 'boolean', default: false }
+          - { label: 'Low Fat', name: 'lowFat', widget: 'boolean', default: false }
+          - { label: 'Low Carb', name: 'lowCarb', widget: 'boolean', default: false }
+          - { label: 'Keto', name: 'keto', widget: 'boolean', default: false }
+          - { label: 'High Fiber', name: 'highFiber', widget: 'boolean', default: false }
+          - { label: 'High Protein', name: 'highProtein', widget: 'boolean', default: false }
+      - label: 'Nutrition'
+        name: 'nutrition'
+        widget: 'object'
         collapsed: true
-        fields: 
-          - {label: "calories", name: "calories", widget: "number", default: 0 }
-          - {label: "fat", name: "fat", widget: "number", default: 0 }
-          - {label: "saturatedFat", name: "saturatedFat", widget: "number", default: 0 }
-          - {label: "transFat", name: "transFat", widget: "number", default: 0 }
-          - {label: "cholesterol", name: "cholesterol", widget: "number", default: 0 }
-          - {label: "sodium", name: "sodium", widget: "number", default: 0 }
-          - {label: "potassium", name: "potassium", widget: "number", default: 0 }
-          - {label: "carbohydrates", name: "carbohydrates", widget: "number", default: 0 }
-          - {label: "fiber", name: "fiber", widget: "number", default: 0 }
-          - {label: "sugar", name: "sugar", widget: "number", default: 0 }
-          - {label: "protein", name: "protein", widget: "number", default: 0 }
-          - {label: "vitaminA", name: "vitaminA", widget: "number", default: 0 }
-          - {label: "vitaminC", name: "vitaminC", widget: "number", default: 0 }
-          - {label: "calcium", name: "calcium", widget: "number", default: 0 }
-          - {label: "iron", name: "iron", widget: "number", default: 0 }
-      - label: "Related Slugs"
-        name: "related_slugs"
+        fields:
+          - { label: 'calories', name: 'calories', widget: 'number', default: 0 }
+          - { label: 'fat', name: 'fat', widget: 'number', default: 0 }
+          - { label: 'saturatedFat', name: 'saturatedFat', widget: 'number', default: 0 }
+          - { label: 'transFat', name: 'transFat', widget: 'number', default: 0 }
+          - { label: 'cholesterol', name: 'cholesterol', widget: 'number', default: 0 }
+          - { label: 'sodium', name: 'sodium', widget: 'number', default: 0 }
+          - { label: 'potassium', name: 'potassium', widget: 'number', default: 0 }
+          - { label: 'carbohydrates', name: 'carbohydrates', widget: 'number', default: 0 }
+          - { label: 'fiber', name: 'fiber', widget: 'number', default: 0 }
+          - { label: 'sugar', name: 'sugar', widget: 'number', default: 0 }
+          - { label: 'protein', name: 'protein', widget: 'number', default: 0 }
+          - { label: 'vitaminA', name: 'vitaminA', widget: 'number', default: 0 }
+          - { label: 'vitaminC', name: 'vitaminC', widget: 'number', default: 0 }
+          - { label: 'calcium', name: 'calcium', widget: 'number', default: 0 }
+          - { label: 'iron', name: 'iron', widget: 'number', default: 0 }
+      - label: 'Related Slugs'
+        name: 'related_slugs'
         required: false
-        widget: "list"
+        widget: 'list'
         fields:
-        - {label: Slug, name: slug, widget: string, default: "example: \"sahara-sunset\""}
+          - { label: Slug, name: slug, widget: string, default: 'example: "sahara-sunset"' }
