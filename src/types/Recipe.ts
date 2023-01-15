@@ -43,6 +43,28 @@ export interface Recipe {
   tips: string[];
 }
 
+export interface IngredientSection {
+  section_name: string;
+  ingredients: Ingredient[];
+}
+
+export interface Ingredient {
+  ingredient: string;
+  qty: number;
+  unit: string;
+}
+
+export interface Step {
+  step: string;
+  step_image?: string;
+  tip?: string;
+}
+
+export interface Tip {
+  tip: string;
+  tip_image?: string;
+}
+
 export interface RecipeSchema {
   layout: string;
   title: string;
@@ -50,9 +72,9 @@ export interface RecipeSchema {
   url?: string;
   date: string;
   feature_image: string;
-  ingredients: { ingredient: string; qty: number; unit: string }[];
-  steps: { step: string }[];
-  tips: { tip: string }[];
+  ingredients_sections: IngredientSection[];
+  steps: Step[];
+  tips: Tip[];
   calories: number;
   cookingTimeInMins: number;
   numberOfServings: number;
@@ -89,4 +111,5 @@ export interface RecipeSchema {
     calcium?: number;
     iron?: number;
   };
+  related_slugs?: string[];
 }

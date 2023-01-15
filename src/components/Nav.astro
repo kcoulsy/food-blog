@@ -7,8 +7,6 @@ const latest = recipes.sort((a, b) => {
   return new Date(b.frontmatter.date).valueOf() - new Date(b.frontmatter.date).valueOf();
 })[0];
 
-console.log(latest.frontmatter.title);
-
 const links = [
   {
     name: 'Home',

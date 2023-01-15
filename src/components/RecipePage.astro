@@ -1,56 +1,14 @@
 ---
+import type { RecipeSchema } from '../types/Recipe';
 import RecipeKeyDetails from './RecipeKeyDetails.astro';
 import RelatedRecipes from './RelatedRecipes.astro';
 
-interface Props {
-  title: string;
-  hookDescription: string;
-  imgSrc: string;
-  ingredients: string[];
-  cookingTimeInMins: number;
-  calories: number;
-  numberOfServings: number;
-  keyDetails?: {
-    dairyFree?: boolean;
-    glutenFree?: boolean;
-    eggFree?: boolean;
-    milkFree?: boolean;
-    nutFree?: boolean;
-    soyFree?: boolean;
-    vegan?: boolean;
-    vegetarian?: boolean;
-    lowCalorie?: boolean;
-    lowFat?: boolean;
-    lowCarb?: boolean;
-    keto?: boolean;
-    highFiber?: boolean;
-    highProtein?: boolean;
-  };
-  nutrition?: {
-    calories?: number;
-    fat?: number;
-    saturatedFat?: number;
-    transFat?: number;
-    cholesterol?: number;
-    sodium?: number;
-    potassium?: number;
-    carbohydrates?: number;
-    fiber?: number;
-    sugar?: number;
-    protein?: number;
-    vitaminA?: number;
-    vitaminC?: number;
-    calcium?: number;
-    iron?: number;
-  };
-  steps: string[];
-  tips: string[];
-}
+interface Props extends RecipeSchema {}
 
 const {
   title,
-  imgSrc,
-  ingredients,
+  feature_image,
+  ingredients_sections,
   cookingTimeInMins,
   calories,
   numberOfServings,
@@ -70,7 +28,7 @@ const {
 <!-- keyDetails, time to cook etc -->
 <div class="w-full pt-4 flex gap-2 justify-between flex-col xl:flex-row">
   <div class="w-full xl:w-4/6">
-    <img src={imgSrc} alt={`${title} feature image`} class="w-full" />
+    <img src={feature_image} alt={`${title} feature image`} class="w-full" />
   </div>
 
   <RecipeKeyDetails
@@ -86,18 +44,26 @@ const {
 <!-- Ingredients list -->
 <div class="">
   <h3 class="font-serif text-3xl">Ingredients</h3>
-  <ul>
-    {
-      ingredients.map((ingredient, index) => (
-        <li class="py-2">
-          <>
-            <input type="checkbox" class="mr-2" id={`ingredient-${index}`} />
-            <label for={`ingredient-${index}`}>{ingredient}</label>
-          </>
-        </li>
-      ))
-    }
-  </ul>
+  {
+    ingredients_sections.map((section, index) => (
+      <>
+        {ingredients_sections.length > 1 && <h4 class="font-serif text-2xl">{section.section_name}</h4>}
+        <ul>
+          {section.ingredients.map(({ ingredient, qty, unit }, index) => (
+            <li class="py-2">
+              <>
+                <input type="checkbox" class="mr-2" id={`ingredient-${index}`} />
+                <label for={`ingredient-${index}`}>
+                  {qty}
+                  {unit} {ingredient}
+                </label>
+              </>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))
+  }
 </div>
 
 <hr class="my-8 border-gray-500" />
@@ -106,7 +72,13 @@ const {
 <div class="">
   <h3 class="font-serif text-3xl">Steps</h3>
   <ol class="list-decimal ml-4">
-    {steps.map((step, index) => <li class="py-2">{step}</li>)}
+    {
+      steps.map(({ step, tip }, index) => (
+        <li class="py-2">
+          {step} <i>{tip}</i>
+        </li>
+      ))
+    }
   </ol>
 </div>
 
@@ -117,7 +89,7 @@ const {
 <div class="">
   <h3 class="font-serif text-3xl">Tips</h3>
   <ul>
-    {tips.map((tip, index) => <li class="py-2">{tip}</li>)}
+    {tips.map(({ tip }, index) => <li class="py-2">{tip}</li>)}
   </ul>
 </div>
 

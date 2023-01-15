@@ -3,21 +3,21 @@ layout: ../../components/BlogPage.astro
 title: All Purpose Pizza Dough
 date: 2023-01-15T13:47:03.799Z
 feature_image: /assets/pizza-dough-bread-83141.webp
-ingredients:
-  - ingredient: Ingredients
-    section_ingredients:
+ingredients_sections:
+  - section_name: Ingredients
+    ingredients:
       - ingredient: Dry Active Yeast
         qty: 4
-        unit: grams
+        unit: g
       - ingredient: Very Strong Bread Flour
         qty: 450
-        unit: grams
+        unit: g
       - ingredient: Sea Salt
         qty: 9
-        unit: grams
+        unit: g
       - ingredient: Extra Virgin Olive Oil
         qty: 5
-        unit: grams
+        unit: g
       - ingredient: Ice Cold Water
         qty: 225
         unit: ml

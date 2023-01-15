@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from './Nav.astro';
 import PageLayout from './PageLayout.astro';
+import RecipePage from './RecipePage.astro';
 const { frontmatter } = Astro.props;
 
 // console.log(Astro.props);
@@ -9,20 +10,8 @@ const { frontmatter } = Astro.props;
 
 <Layout title="hello">
   <div class="container mx-auto">
-    <PageLayout
-      title={frontmatter.title}
-      hookDescription="asd"
-      calories={frontmatter.calories}
-      ingredients={frontmatter.ingredients.map((ingredient: { ingredient: any }) => ingredient.ingredient)}
-      cookingTimeInMins={frontmatter.cookingTimeInMins}
-      imgSrc={frontmatter.feature_image}
-      numberOfServings={frontmatter.numberOfServings}
-      steps={frontmatter.steps.map((step: { step: any }) => step.step)}
-      tips={frontmatter.tips?.map((tip: { tip: any }) => tip.tip) || []}
-      keyDetails={frontmatter.keyDetails}
-      nutrition={frontmatter.nutrition}
-    >
+    <RecipePage {...frontmatter}>
       <slot />
-    </PageLayout>
+    </RecipePage>
   </div>
 </Layout>

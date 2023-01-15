@@ -15,35 +15,53 @@ collections:
     fields:
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: '../../components/BlogPage.astro' }
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Hook Description', name: 'hook_description', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Featured Image', name: 'feature_image', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - label: 'Ingredients'
-        name: 'ingredients'
+        name: 'ingredients_sections'
         widget: 'list'
         fields:
-          - { label: 'Section Name', name: ingredient, widget: string, default: 'If only 1 section this wont be shown' }
+          - {
+              label: 'Section Name',
+              name: section_name,
+              widget: string,
+              default: 'If only 1 section this wont be shown',
+            }
           - label: 'Section Ingredients'
-            name: 'section_ingredients'
+            name: 'ingredients'
             widget: 'list'
             fields:
               - { label: Ingredient, name: ingredient, widget: string, default: 'Enter ingredient here such as egg' }
               - { label: Quantity, name: qty, widget: number, default: 1 }
-              - { label: Unit, name: unit, widget: string, default: 'Such as 10ml or 50g etc' }
+              - {
+                  label: Unit,
+                  name: unit,
+                  widget: select,
+                  default: ['g', 'kg', 'l', 'ml', 'tsp', 'tbsp', 'pint', 'oz', 'fl oz', 'cup', 'pinch'],
+                }
+              - {
+                  label: Unit (custom),
+                  name: unit,
+                  widget: string,
+                  default: 'Select "custom" from dropdown',
+                  required: false,
+                }
       - label: 'Steps'
         name: 'steps'
         widget: 'list'
         fields:
           - { label: Step, name: step, widget: string, default: 'Enter instructions here' }
-          - { label: 'Step Image (optional)', name: 'thumbnail', widget: 'image', required: false }
-          - { label: 'Tip for Step (optional)', name: tip, widget: string, default: 'Enter tip here', required: false }
+          - { label: 'Step Image', name: 'step_image', widget: 'image', required: false }
+          - { label: 'Tip for Step', name: tip, widget: string, required: false }
       - label: 'Tips'
         name: 'tips'
         required: false
         widget: 'list'
         fields:
           - { label: Tip, name: tip, widget: string, default: 'Enter tip here' }
-          - { label: 'Optional Setp Image', name: 'thumbnail', widget: 'image', required: false }
+          - { label: 'Tip Image', name: 'thumbnail', widget: 'image', required: false }
       - { label: 'Cooking Time (in minutes)', name: 'cookingTimeInMins', widget: 'number' }
       - { label: 'Calories', name: 'calories', widget: 'number' }
       - { label: 'Number of Servings', name: 'numberOfServings', widget: 'number' }
